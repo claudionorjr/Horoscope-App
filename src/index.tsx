@@ -10,7 +10,8 @@ import {
 
 import { StatusBar } from 'react-native';
 import { useTheme } from 'styled-components/native';
-import HomeScreen from './Screens/Home';
+import { NavigationContainer } from '@react-navigation/native';
+import AppRoutes from './Routes';
 
 const AppManager = () => {
   const { colors } = useTheme();
@@ -27,7 +28,9 @@ const AppManager = () => {
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor={colors.secondary} />
-      <HomeScreen />
+      <NavigationContainer>
+        <AppRoutes />
+      </NavigationContainer>
     </>
   );
 };

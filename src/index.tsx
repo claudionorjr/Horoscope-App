@@ -12,6 +12,7 @@ import { StatusBar } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
 import AppRoutes from './Routes';
+import { ContextProvider } from './Hooks';
 
 const AppManager = () => {
   const { colors } = useTheme();
@@ -29,7 +30,9 @@ const AppManager = () => {
     <>
       <StatusBar barStyle="light-content" backgroundColor={colors.secondary} />
       <NavigationContainer>
-        <AppRoutes />
+        <ContextProvider>
+          <AppRoutes />
+        </ContextProvider>
       </NavigationContainer>
     </>
   );

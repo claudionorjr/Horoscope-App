@@ -20,6 +20,6 @@ export const CustomFlatList = styled(
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: getBottomSpace() + normalizePixel(16),
-    paddingTop: getBottomSpace() + normalizePixel(16),
+    paddingTop: normalizePixel(16),
   },
 })``;

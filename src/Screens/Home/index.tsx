@@ -1,10 +1,21 @@
 import React, { memo, useCallback } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Container, CustomFlatList, WrapperFlatList } from './styles';
 import { changeDataToBR, mockApi } from '../../Helpers';
 import { Button } from '../../Elements';
+import { Horoscopes } from '../../@Types';
 
 const HomeScreen = () => {
-  const onPressDate = useCallback(() => {}, []);
+  const navigation = useNavigation();
+
+  const onPressDate = useCallback(
+    (horoscopes: Horoscopes[]) => {
+      navigation.navigate('Signs', {
+        horoscopes,
+      });
+    },
+    [navigation],
+  );
 
   return (
     <Container>
@@ -15,7 +26,7 @@ const HomeScreen = () => {
         renderItem={({ item }) => (
           <Button
             title={`Horoscopo de ${changeDataToBR(item.dt)}`}
-            onPress={onPressDate}
+            onPress={() => onPressDate(item.horoscopes)}
           />
         )}
       />

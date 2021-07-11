@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useTheme } from 'styled-components';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import { normalizePixel } from '../../Helpers';
 import { Container, Title, BackButton } from './styles';
 
@@ -11,8 +12,11 @@ interface Props {
 
 const Header = ({ title, isBackArrow }: Props) => {
   const { colors } = useTheme();
+  const navigation = useNavigation();
 
-  const onPressBack = useCallback(() => {}, []);
+  const onPressBack = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
 
   return (
     <Container>

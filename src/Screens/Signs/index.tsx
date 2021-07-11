@@ -1,30 +1,40 @@
-import React, { memo, useCallback } from 'react';
-import { Container, CustomFlatList, WrapperFlatList } from './styles';
-import { changeDataToBR, mockApi } from '../../Helpers';
-import { Button } from '../../Elements';
-import { Header } from '../../Components';
+import React, { useCallback } from 'react';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import {
+  Container,
+  CustomFlatList,
+  WrapperFlatList,
+  CustomButton,
+} from './styles';
+import { Horoscopes } from '../../@Types';
+
+import { useModalFeedback } from '../../Hooks';
 
 const HomeScreen = () => {
-  const onPressDate = useCallback(() => {}, []);
+  const { show } = useModalFeedback();
+  const route: RouteProp<{ params: { horoscopes: Horoscopes[] } }, 'params'> =
+    useRoute();
+
+  const onOpenModal = useCallback((item: Horoscopes) => {
+    show({
+      title: item.sign,
+      subTitle: item.description,
+    });
+  }, []);
 
   return (
-    <>
-      <Header title="Confira as datas" />
-      <Container>
-        <CustomFlatList
-          data={mockApi.result.reverse()}
-          keyExtractor={value => `${value.dt}`}
-          ItemSeparatorComponent={() => <WrapperFlatList />}
-          renderItem={({ item }) => (
-            <Button
-              title={`Horoscopo de ${changeDataToBR(item.dt)}`}
-              onPress={onPressDate}
-            />
-          )}
-        />
-      </Container>
-    </>
+    <Container>
+      <CustomFlatList
+        data={route.params.horoscopes}
+        keyExtractor={value => `${value.sign}`}
+        ItemSeparatorComponent={() => <WrapperFlatList />}
+        numColumns={2}
+        renderItem={({ item }) => (
+          <CustomButton title={item.sign} onPress={() => onOpenModal(item)} />
+        )}
+      />
+    </Container>
   );
 };
 
-export default memo(HomeScreen);
+export default HomeScreen;

@@ -17,7 +17,7 @@ const AppRoutes = () => (
       name="Signs"
       component={Signs}
       options={{
-        header: () => <Header title="Confira as datas" isBackArrow />,
+        header: () => <Header title="Escolha seu Signo" isBackArrow />,
       }}
     />
   </Navigator>

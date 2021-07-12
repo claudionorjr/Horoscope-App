@@ -1,8 +1,11 @@
 import React from 'react';
 import { ModalFeedbackProvider } from './ModalFeedback';
+import { HoroscopeApiProvider } from './HoroscopeApi';
 
 const ContextProvider: React.FC = ({ children }) => (
-  <ModalFeedbackProvider>{children}</ModalFeedbackProvider>
+  <HoroscopeApiProvider>
+    <ModalFeedbackProvider>{children}</ModalFeedbackProvider>
+  </HoroscopeApiProvider>
 );
 
 export default ContextProvider;

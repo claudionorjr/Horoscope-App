@@ -1,12 +1,31 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Container, CustomFlatList, WrapperFlatList } from './styles';
 import { changeDataToBR, mockApi } from '../../Helpers';
 import { Button } from '../../Elements';
-import { Horoscopes } from '../../@Types';
+import { HoroscopeResponse, Horoscopes } from '../../@Types';
+import { useHoroscopeApi } from '../../Hooks';
 
 const HomeScreen = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [horoscopeResponse, setHoroscopeResponse] = useState<HoroscopeResponse>(
+    {} as HoroscopeResponse,
+  );
   const navigation = useNavigation();
+  const { getHoroscope } = useHoroscopeApi();
+
+  useEffect(() => {
+    async function getDatiesFromApi() {
+      setIsLoading(true);
+      const response = await getHoroscope();
+      if (response) {
+        setHoroscopeResponse(response);
+        setIsLoading(false);
+      }
+    }
+
+    getDatiesFromApi();
+  }, []);
 
   const onPressDate = useCallback(
     (horoscopes: Horoscopes[]) => {

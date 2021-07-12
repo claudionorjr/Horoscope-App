@@ -1,6 +1,7 @@
 import { HoroscopeResponse } from '../@Types';
 import normalizePixel from './normalizePixel';
 import changeDataToBR from './changeDataToBR';
+import getIconByName from './getIconByName';
 
 const mockApi: HoroscopeResponse = {
   result: [
@@ -4920,4 +4921,4 @@ const mockApi: HoroscopeResponse = {
   ],
 };
 
-export { normalizePixel, mockApi, changeDataToBR };
+export { normalizePixel, mockApi, changeDataToBR, getIconByName };

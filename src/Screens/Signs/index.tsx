@@ -9,6 +9,7 @@ import {
 import { Horoscopes } from '../../@Types';
 
 import { useModalFeedback } from '../../Hooks';
+import { getIconByName } from '../../Helpers';
 
 const HomeScreen = () => {
   const { show } = useModalFeedback();
@@ -30,7 +31,11 @@ const HomeScreen = () => {
         ItemSeparatorComponent={() => <WrapperFlatList />}
         numColumns={2}
         renderItem={({ item }) => (
-          <CustomButton title={item.sign} onPress={() => onOpenModal(item)} />
+          <CustomButton
+            title={item.sign}
+            onPress={() => onOpenModal(item)}
+            rightIcon={getIconByName(item.sign)}
+          />
         )}
       />
     </Container>

@@ -11,7 +11,7 @@ const AppRoutes = () => (
     <Screen
       name="Home"
       component={HomeScreen}
-      options={{ header: () => <Header title="Confira as datas" /> }}
+      options={{ header: () => <Header title="Horoscopos diários" /> }}
     />
     <Screen
       name="Signs"

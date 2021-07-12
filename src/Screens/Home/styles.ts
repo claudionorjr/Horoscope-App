@@ -7,7 +7,6 @@ import { normalizePixel } from '../../Helpers';
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
-  ${({ theme }) => theme.styles.paddingHorizontal(24)};
 `;
 
 export const WrapperFlatList = styled.View`
@@ -21,5 +20,7 @@ export const CustomFlatList = styled(
   contentContainerStyle: {
     paddingBottom: getBottomSpace() + normalizePixel(16),
     paddingTop: normalizePixel(16),
+    paddingLeft: normalizePixel(24),
+    paddingRight: normalizePixel(24),
   },
 })``;

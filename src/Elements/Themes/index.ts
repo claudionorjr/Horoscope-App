@@ -35,6 +35,12 @@ export default {
       color: ${white};
       font-family: ${medium};
     `,
+    white700: (size: number, lineHeight: number) => css`
+      font-size: ${normalizePixel(size)}px;
+      line-height: ${normalizePixel(lineHeight)}px;
+      color: ${white};
+      font-family: ${bold};
+    `,
   },
   styles: {
     paddingHorizontal: (n: number) => css`

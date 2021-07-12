@@ -12,5 +12,5 @@ export const Container = styled(RectButton)`
 `;
 
 export const ButtonText = styled.Text`
-  ${({ theme }) => theme.fontStyles.white500(16, 20)};
+  ${({ theme }) => theme.fontStyles.white500(18, 24)};
 `;
